@@ -14,7 +14,7 @@ export const AddItem = (props) => {
 
   return (
     <div>
-      <input onChange={handleInput}/>
+      <input id="itemDescription" onChange={handleInput}/>
       <button onClick={function(){ handleSubmit(props.input) } }>Add Item</button>
     </div>
   )
