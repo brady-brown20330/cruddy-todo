@@ -1,15 +1,18 @@
 import React, { useEffect, useState } from "react";
-
+import axios from 'axios';
 
 export const TodoList = (props) => {
-  console.log('props in todoList comp: ', props)
+  // console.log('props in todoList comp: ', props)
 
   const deleteItem = (e) => {
-    let index = props.list.indexOf(e.target.id)
-    if (index > -1) {
-      props.list.splice(index, 1)
-    }
-    console.log(props.list)
+    axios.delete(`/delete:id`, {
+      headers: {
+        id: e.target.id
+      }
+    })
+    // .then((res) => console.log(res.data))
+    // .then(res => setList(res.rows))
+    console.log(e.target.id)
   }
 
 
@@ -18,7 +21,7 @@ export const TodoList = (props) => {
        <div>
          <div>{`Todo: ${item.todo}`}</div>
          <div>{`Date added: ${item.posting_date}`}</div>
-       <button id={item} onClick={deleteItem}>Delete</button>
+       <button id={item.id} onClick={deleteItem}>Delete</button>
        </div>
     ))
   )

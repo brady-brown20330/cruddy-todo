@@ -12,6 +12,17 @@ app.get('/todos/list', (req, res) => {
       throw err;
     }
     res.send(results)
+    // console.log('here are the results: ', results)
+  })
+})
+
+app.delete('/delete:id', (req, res) => {
+  // console.log('pull the id from somewhere in here: ', req.headers.id)
+  queries.deleteTodo(function(err, results) {
+    if (err) {
+      throw err;
+    }
+    res.send(results)
     console.log('here are the results: ', results)
   })
 })
